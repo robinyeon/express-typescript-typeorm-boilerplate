@@ -1,6 +1,6 @@
 import express from "express";
 import { Express, Request, Response } from "express";
-import { User } from "./entity/user.entity";
+import { User } from "./entities/user.entity";
 import { myDataSource } from "./data-source.ts";
 import dotenv from "dotenv";
 
