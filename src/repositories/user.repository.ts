@@ -2,8 +2,6 @@ import { Repository } from "typeorm";
 import { User } from "../entities/user.entity";
 import { myDataSource } from "../data-source.ts";
 import { createUser } from "../types/user.type";
-import { PossibleNull } from "../types/common.type";
-import { CustomError } from "../middleware/error.middleware";
 
 export class UserRepository {
   private user: Repository<User>;
@@ -14,7 +12,6 @@ export class UserRepository {
 
   async findOneUserById(id: string) {
     const foundUser = this.user.findOneBy({ id });
-    if (!foundUser) throw new CustomError(400, "User not found.");
     return foundUser;
   }
 
