@@ -2,6 +2,7 @@ import { Repository } from "typeorm";
 import { User } from "../entities/user.entity";
 import { myDataSource } from "../data-source.ts";
 import { createUser } from "../types/user.type";
+import { v4 as uuidv4 } from "uuid";
 
 export class UserRepository {
   private user: Repository<User>;
@@ -16,7 +17,8 @@ export class UserRepository {
   }
 
   createUser(newUserInfo: createUser): User {
-    const createdUser = this.user.create(newUserInfo);
+    const id = uuidv4();
+    const createdUser = this.user.create({ ...newUserInfo, id });
     return createdUser;
   }
 }
