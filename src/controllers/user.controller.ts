@@ -6,6 +6,7 @@ export class UserController {
   private userService: UserService;
   constructor() {
     this.userService = new UserService();
+    this.createUser = this.createUser.bind(this);
   }
 
   createUser(req: Request, res: Response, next: NextFunction) {
